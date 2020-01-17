@@ -1,4 +1,4 @@
-import { StreamCamera, Codec } from "pi-camera-connect";
+const { StreamCamera, Codec } = require( "pi-camera-connect" );
 
 
 const piCamStream = async () => {
