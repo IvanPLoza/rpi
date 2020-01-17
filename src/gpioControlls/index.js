@@ -11,8 +11,8 @@ rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR2, rpio.OUTPUT, rpio.LOW);
-rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.LOW);
-rpio.open(MOTOR_RIGHT_EN, rpio.OUTPUT, rpio.LOW);
+rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.HIGH);
+rpio.open(MOTOR_RIGHT_EN, rpio.OUTPUT, rpio.HIGH);
 
 class motorControll{
 
