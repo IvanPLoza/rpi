@@ -1,4 +1,4 @@
-const {motorControll, testMotors} = require("./src/gpioControlls/index.js")
+var {motor, testMotors} = require("./src/gpioControlls/index.js")
 
 
 testMotors();

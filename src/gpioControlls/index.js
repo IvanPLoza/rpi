@@ -45,8 +45,8 @@ class motorControll{
 
 const motor = new motorControll();
 
-function testMotors(){
-    motor.stopAll();
+const testMotors = function(){
+    motorControll.stopAll();
     setTimeout(motor.goBackwards(), 1000);
     setTimeout(motor.goForward(), 1000);
     setTimeout(motor.goLeft(), 1000);
@@ -54,4 +54,4 @@ function testMotors(){
     setTimeout(motor.stopAll(), 1000);
 }
 
-export {motorControll, testMotors}
+module.exports = {motor, testMotors};
