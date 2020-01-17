@@ -16,4 +16,6 @@ const piCamStream = async () => {
     console.log("IMAGE IS: " + image);
 };
 
-module.exports = {piCamStream};
+
+
+piCamStream();
