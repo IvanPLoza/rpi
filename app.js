@@ -5,8 +5,10 @@
  * 
  */
 
-const {motor, testMotors} = require("./src/gpioControlls/index.js");
+const {motor, testMotors, motorControll} = require("./src/gpioControlls/index.js");
 
- 
-testMotors();
+setInterval(function(){
+    motorControll.goBackwards();
+}, 300);
+
 

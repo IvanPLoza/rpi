@@ -63,4 +63,4 @@ const testMotors = function(){
     setTimeout(function(){motorControll.stopAll(); console.log("stopping")}, 1000);
 }
 
-module.exports = {motor, testMotors};
+module.exports = {motor, testMotors, motorControll};
