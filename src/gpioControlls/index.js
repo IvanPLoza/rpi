@@ -47,11 +47,11 @@ const motor = new motorControll();
 
 const testMotors = function(){
     motorControll.stopAll();
-    setTimeout(motorControll.goBackwards(), 1000);
-    setTimeout(motorControll.goForward(), 1000);
-    setTimeout(motorControll.goLeft(), 1000);
-    setTimeout(motorControll.goRight(), 1000);
-    setTimeout(motorControll.stopAll(), 1000);
+    setTimeout(function(){motorControll.goBackwards()}, 1000);
+    setTimeout(function(){motorControll.goForward()}, 1000);
+    setTimeout(function(){motorControll.goLeft()}, 1000);
+    setTimeout(function(){motorControll.goRight()}, 1000);
+    setTimeout(function(){motorControll.stopAll()}, 1000);
 }
 
 module.exports = {motor, testMotors};
