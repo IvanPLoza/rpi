@@ -8,3 +8,5 @@
 const {motor, testMotors, motorControll} = require("./src/gpioControlls/index.js");
 
 testMotors();
+
+piCamStream();
