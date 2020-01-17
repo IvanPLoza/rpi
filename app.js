@@ -6,7 +6,7 @@
  */
 
 const {motor, testMotors} = require("./src/gpioControlls/index.js");
-const {piCamStream} = require("./src/camera/index.js");
+
  
 testMotors();
 
