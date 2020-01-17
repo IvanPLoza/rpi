@@ -50,6 +50,10 @@ class motorControll{
         rpio.write(MOTOR_HR1, rpio.LOW);
         rpio.write(MOTOR_HR2, rpio.HIGH);
     }
+
+    static readPin(){
+        
+    }
 }
 
 const motor = new motorControll();

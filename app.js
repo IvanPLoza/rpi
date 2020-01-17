@@ -6,9 +6,7 @@
  */
 
 const {motor, testMotors, motorControll} = require("./src/gpioControlls/index.js");
-
-setInterval(function(){
-    motorControll.goBackwards();
-}, 300);
+var rpio = require('rpio');
 
 
+console.log(rpio.open(32, rpio.OUTPUT, rpio.HIGH));
