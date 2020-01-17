@@ -11,9 +11,9 @@ const piCamStream = async () => {
 
     const image = await streamCamera.takeImage();
 
-    console.log(image);
-
     await streamCamera.stopCapture();
+
+    console.log("IMAGE IS: " + image);
 };
 
 module.exports = {piCamStream};
