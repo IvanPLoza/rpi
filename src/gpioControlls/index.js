@@ -53,3 +53,5 @@ function testMotors(){
     setTimeout(motor.goRight(), 1000);
     setTimeout(motor.stopAll(), 1000);
 }
+
+export {motorControll, testMotors}
