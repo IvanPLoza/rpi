@@ -1,18 +1,18 @@
 var rpio = require('rpio');
 
-const MOTOR_HL1 = 12; // Left motor forward
-const MOTOR_HL2 = 13; // Left motor backward
-const MOTOR_HR1 = 20; // Right motor backward
-const MOTOR_HR2 = 21; // right motor forward
-const MOTOR_LEFT_EN = 6; // Enable left motor 
-const MOTOR_RIGHT_EN = 26; // Enable right motor
+const MOTOR_HL1 = 32; // Left motor forward
+const MOTOR_HL2 = 33; // Left motor backward
+const MOTOR_HR1 = 38; // Right motor backward
+const MOTOR_HR2 = 40; // right motor forward
+const MOTOR_LEFT_EN = 31; // Enable left motor
+const MOTOR_RIGHT_EN = 37; // Enable right motor
 
 rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.LOW);
-rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.LOW);
+rpio.open(MOTOR_RIGHT_EN, rpio.OUTPUT, rpio.LOW);
 
 class motorControll{
 
@@ -56,11 +56,11 @@ const motor = new motorControll();
 
 const testMotors = function(){
     motorControll.stopAll();
-    setTimeout(function(){motorControll.goBackwards()}, 1000);
-    setTimeout(function(){motorControll.goForward()}, 1000);
-    setTimeout(function(){motorControll.goLeft()}, 1000);
-    setTimeout(function(){motorControll.goRight()}, 1000);
-    setTimeout(function(){motorControll.stopAll()}, 1000);
+    setTimeout(function(){motorControll.goBackwards(); console.log("going back")}, 1000);
+    setTimeout(function(){motorControll.goForward(); console.log("going forward")}, 1000);
+    setTimeout(function(){motorControll.goLeft(); console.log("going left")}, 1000);
+    setTimeout(function(){motorControll.goRight(); console.log("going right")}, 1000);
+    setTimeout(function(){motorControll.stopAll(); console.log("stopping")}, 1000);
 }
 
 module.exports = {motor, testMotors};

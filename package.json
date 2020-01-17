@@ -11,7 +11,10 @@
   "keywords": [],
   "dependencies": {
     "gpio": "^0.2.10",
+    "i": "^0.3.6",
+    "npm": "^6.13.6",
     "pi-camera-connect": "^0.2.0",
-    "rpio": "^2.1.1"
+    "rpio": "^2.1.1",
+    "socket.io-client": "^2.3.0"
   }
 }
