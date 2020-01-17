@@ -52,7 +52,7 @@ class motorControll{
     }
 
     static readPin(){
-        
+
     }
 }
 
@@ -61,10 +61,10 @@ const motor = new motorControll();
 const testMotors = function(){
     motorControll.stopAll();
     setTimeout(function(){motorControll.goBackwards(); console.log("going back")}, 1000);
-    setTimeout(function(){motorControll.goForward(); console.log("going forward")}, 1000);
-    setTimeout(function(){motorControll.goLeft(); console.log("going left")}, 1000);
-    setTimeout(function(){motorControll.goRight(); console.log("going right")}, 1000);
-    setTimeout(function(){motorControll.stopAll(); console.log("stopping")}, 1000);
+    setTimeout(function(){motorControll.goForward(); console.log("going forward")}, 2000);
+    setTimeout(function(){motorControll.goLeft(); console.log("going left")}, 3000);
+    setTimeout(function(){motorControll.goRight(); console.log("going right")}, 4000);
+    setTimeout(function(){motorControll.stopAll(); console.log("stopping")}, 5000);
 }
 
 module.exports = {motor, testMotors, motorControll};
