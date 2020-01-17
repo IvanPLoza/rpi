@@ -2,7 +2,7 @@ var rpio = require('rpio');
 
 const MOTOR_HL1 = 12; // Left motor forward
 const MOTOR_HL2 = 13; // Left motor backward
-const MOTOR_HR1 = 20; // Right motor backward
+const MOTOR_HR1 = 21; // Right motor backward
 const MOTOR_HR2 = 21; // right motor forward
 
 class motorControll{
