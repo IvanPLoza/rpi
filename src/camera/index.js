@@ -1,26 +1,21 @@
 const raspberryPiCamera = require('raspberry-pi-camera-native');
-var qrdecoder = require("node-zxing")({});
-var Jimp = require("jimp");
+const WebSocketClient = require("websocket").client;
 var fs = require("fs");
 
-raspberryPiCamera.on('frame', (data) => {
-    fs.writeFileSync("test.jpeg", data);
+var ws = new WebSocketClient();
+
+ws.on("connect", function(conn){
+    raspberryPiCamera.on('frame', (data) => {
+        ws.sendUTF(data);
+    });
+    
+    raspberryPiCamera.start({
+        width: 1280,
+        height: 720,
+        fps: 30,
+        quality: 100,
+        encoding: 'JPEG'
+    });
 });
 
-fs.watch("test.jpeg", function(curr, prev){
-    console.log(curr);
-    qrdecoder.decode("test.jpeg", (err, out) => {
-        if(err){
-            console.log(err);
-        }
-        console.log(out);
-    })
-});
-
-raspberryPiCamera.start({
-    width: 1280,
-    height: 720,
-    fps: 30,
-    quality: 100,
-    encoding: 'JPEG'
-});
+ws.connect("ws://192.168.88.209:8001");
