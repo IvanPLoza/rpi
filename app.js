@@ -7,6 +7,7 @@
 
 const {motorControll, testServo} = require("./src/gpioControlls/index.js");
 require("./src/camera/index");
+require("./src/socket/index");
 
 motorControll.stopAll();
 
