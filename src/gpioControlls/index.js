@@ -1,5 +1,5 @@
 var rpio = require('rpio');
-const {motorEncoder} = require("./src/motorEncoder/index.js")
+const {motorEncoder} = require("../motorEncoder/index");
 
 const MOTOR_HL1 = 32; // Left motor forward
 const MOTOR_HL2 = 33; // Left motor backward
@@ -59,7 +59,7 @@ class motorControll{
 
         return false;
     }
-    
+
     static stopAll(){
 
         motorEncoder.resetEncoder();
