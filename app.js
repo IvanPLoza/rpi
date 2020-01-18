@@ -6,4 +6,9 @@
  */
 
 const {motor, testServo} = require("./src/gpioControlls/index.js");
-require("./src/camera/index");
+//require("./src/camera/index");
+
+motor.goForward();
+setTimeout(function(){
+  motor.stopALL();
+}, 1000);
