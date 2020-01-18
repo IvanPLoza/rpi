@@ -44,7 +44,7 @@ class motorControll{
     }
 
     static goForward(speed){
-        rpio.write(MOTOR_HL1, speed);
+        rpio.write(MOTOR_HL1, 900);
         rpio.write(MOTOR_HL2, 0);
         rpio.write(MOTOR_HR1, 0);
         rpio.write(MOTOR_HR2, 0);
