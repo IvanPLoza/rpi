@@ -24,16 +24,20 @@ rpio.init(options);
 motorEncoder.initEncoders();
 
 //Set GPIO modes, put motors to low when starting
-rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
+rpio.open(MOTOR_HL1, rpio.PWM);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
-rpio.open(MOTOR_HR2, rpio.OUTPUT, rpio.LOW);
+rpio.open(MOTOR_HR2, rpio.PWM);
 rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.HIGH);
 rpio.open(MOTOR_RIGHT_EN, rpio.OUTPUT, rpio.HIGH);
 
 var distanceErrorMax = 5;
 var distanceLeftError = 0;
 var distanceRightError = 0;
+
+rpio.pwmSetClockDivider(64);
+rpio.pwmSetRange(MOTOR_HL1, 1024);
+rpio.pwmSetRange(MOTOR_HR2, 1024);
 
 class motorControll{
 
@@ -62,10 +66,10 @@ class motorControll{
 
         motorEncoder.resetEncoder();
 
-        rpio.write(MOTOR_HL1, rpio.LOW);
+        rpio.pwmSetData(MOTOR_HL1, 0);
         rpio.write(MOTOR_HL2, rpio.LOW);
         rpio.write(MOTOR_HR1, rpio.LOW);
-        rpio.write(MOTOR_HR2, rpio.LOW);
+        rpio.pwmSetData(MOTOR_HR2, 0);
     }
 
     static goBackwards(){
@@ -82,17 +86,17 @@ class motorControll{
 
         await checkForErrors();
 
-        rpio.write(MOTOR_HL1, rpio.HIGH);
+        rpio.pwmSetData(MOTOR_HL1, speed);
         rpio.write(MOTOR_HL2, rpio.LOW);
         rpio.write(MOTOR_HR1, rpio.LOW);
-        rpio.write(MOTOR_HR2, rpio.HIGH);
+        rpio.pwmSetData(MOTOR_HR2, speed);
     }
 
     static goRight(){
 
         await checkForErrors();
 
-        rpio.write(MOTOR_HL1, rpio.HIGH);
+        rpio.pwmSetData(MOTOR_HL1, 1024);
         rpio.write(MOTOR_HL2, rpio.LOW);
         rpio.write(MOTOR_HR1, rpio.HIGH);
         rpio.write(MOTOR_HR2, rpio.LOW);
@@ -105,7 +109,7 @@ class motorControll{
         rpio.write(MOTOR_HL1, rpio.LOW);
         rpio.write(MOTOR_HL2, rpio.HIGH);
         rpio.write(MOTOR_HR1, rpio.LOW);
-        rpio.write(MOTOR_HR2, rpio.HIGH);
+        rpio.pwmSetData(MOTOR_HR2, 1024);
     }
 
     static readPin(){
