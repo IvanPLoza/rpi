@@ -1,5 +1,4 @@
 var rpio = require('rpio');
-const Gpio = require('pigpio').Gpio;
 const {motorEncoder} = require("./src/motorEncoder/index.js")
 
 const MOTOR_HL1 = 32; // Left motor forward
