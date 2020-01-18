@@ -23,3 +23,5 @@ setTimeout(function(){
     motorControll.goRight();
 }, 4000);
 
+motorControll.stopAll();
+
