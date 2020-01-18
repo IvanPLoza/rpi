@@ -15,7 +15,7 @@ async function readQR(data){
 
 raspberryPiCamera.on('frame', (data) => {
     //fs.writeFileSync("test.jpeg", data);
-    readQR(data);
+    readQR(data).catch((err) => {});
 });
 
 raspberryPiCamera.start({
