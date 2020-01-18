@@ -4,11 +4,10 @@ const Jimp = require("jimp");
 var fs = require("fs");
 
 async function readQR(data){
-    const img = await new Promise((resolve, reject) => {
-        Jimp.read(data, function(err, image) {
-            resolve(image.grayscale());
+    var img = await Jimp.read(data, function(err, image) {
+           img = image.grayscale();
         });
-    })
+    
     fs.writeFileSync("test.jpeg", img);
     const qr = new QRCode();
     const value = await new Promise((resolve, reject) => {
