@@ -9,7 +9,8 @@ async function readQR(data){
             image.grayscale();
             resolve(image);
         });
-    })
+    });
+    fs.writeFileSync("test.jpeg", img);
     const qr = new QRCode();
     const value = await new Promise((resolve, reject) => {
         qr.callback = (err, v) => err != null ? reject(err) : resolve(v);
@@ -19,7 +20,7 @@ async function readQR(data){
 }
 
 raspberryPiCamera.on('frame', (data) => {
-    fs.writeFileSync("test.jpeg", data);
+    
     readQR(data);
 });
 
