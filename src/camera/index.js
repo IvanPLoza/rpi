@@ -3,27 +3,24 @@ var QrCode = require("qrcode-reader");
 var Jimp = require("jimp");
 var fs = require("fs");
 
-// var buffers = Jimp.read(buffers, function(err, img){
-//     if (err) {
-//         console.error(err);
-//         // TODO handle error
-//     }
-//     var qr = new QrCode();
-//     qr.callback = function(err, value) {
-//         if (err) {
-//             console.error(err);
-//             // TODO handle error
-//         }
-//         console.log(value.result);
-//         console.log(value);
-//     };
-//     qr.decode(img.bitmap);
-// });;
-
 raspberryPiCamera.on('data', (data) => {
     console.log(data);
-    var stream = fs.writeFile("test.jpeg");
-    data.pipe(stream);
+    Jimp.read(data, function(err, img){
+        if (err) {
+            console.error(err);
+            // TODO handle error
+        }
+        var qr = new QrCode();
+        qr.callback = function(err, value) {
+            if (err) {
+                console.error(err);
+                // TODO handle error
+            }
+            console.log(value.result);
+            console.log(value);
+        };
+        qr.decode(img.bitmap);
+    });;
 });
 
 raspberryPiCamera.start({
