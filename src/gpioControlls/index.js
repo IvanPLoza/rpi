@@ -7,8 +7,8 @@ const MOTOR_HR1 = 38; // Right motor backward
 const MOTOR_HR2 = 40; // right motor forward
 const MOTOR_LEFT_EN = 31; // Enable left motor
 const MOTOR_RIGHT_EN = 37; // Enable right motor
-const SERVO_1 = 12; // Enable left motor
-const SERVO_2 = 13; // Enable right motor
+const SERVO_1 = 33; // Enable left motor
+const SERVO_2 = 32; // Enable right motor
 
 rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
@@ -16,11 +16,8 @@ rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.HIGH);
 rpio.open(MOTOR_RIGHT_EN, rpio.OUTPUT, rpio.HIGH);
-rpio.open(SERVO_1, rpio.OUTPUT);
-rpio.open(SERVO_2, rpio.OUTPUT);
-
-var servo1 = new PiServo(12); 
-var servo2 = new PiServo(13); 
+rpio.open(SERVO_1, rpio.PWM);
+rpio.open(SERVO_2, rpio.PWM);
 
 class motorControll{
 
@@ -67,10 +64,10 @@ class motorControll{
 class cameraControl{
 
     static up(deg){
-        servo1.open().then(function(){  
-            console.log("here");
-            servo1.setDegree(100); // 0 - 180
-        });
+        rpio.pwmSetClockDivider(64);
+        rpio.pwmSetRange(33, 1024);
+        rpio.pwmSetData(33, 512);
+
     }
 
 }
