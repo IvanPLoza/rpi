@@ -106,24 +106,24 @@ class motorControll{
     static goForward(speed){
 
         if(this.checkForErrors() == 1){
-            this.goLeft();
+            //this.goLeft();
             setTimeout(function(){
                 rpio.pwmSetData(MOTOR_HL1, speed);
                 rpio.write(MOTOR_HL2, rpio.LOW);
                 rpio.write(MOTOR_HR1, rpio.LOW);
                 rpio.pwmSetData(MOTOR_HR2, speed);
-            }, 10);
+            }, 0);
             
         }
         else if(this.checkForErrors() == 2){
-            this.goRight();
+            //this.goRight();
 
             setTimeout(function(){
                 rpio.pwmSetData(MOTOR_HL1, speed);
                 rpio.write(MOTOR_HL2, rpio.LOW);
                 rpio.write(MOTOR_HR1, rpio.LOW);
                 rpio.pwmSetData(MOTOR_HR2, speed);
-            }, 10);
+            }, 0);
         }
         else {
             rpio.pwmSetData(MOTOR_HL1, speed);
