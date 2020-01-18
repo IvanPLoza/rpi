@@ -23,9 +23,9 @@ const piCamStream = async () => {
 
     // We can also listen to data events as they arrive
     videoStream.on("data", (data) => {
-
+        console.log(data);
         
-        var img = new ImageParser(data);
+        /*var img = new ImageParser(data);
 
         img.parse(function(err) {
 
@@ -46,7 +46,7 @@ const piCamStream = async () => {
                 console.log(value);
             };
             qr.decode({width: img.width(), height: img.height()}, img._imgBuffer);
-        });
+        });*/
         
     });
     videoStream.on("end", data => console.log("Video stream has ended"));
