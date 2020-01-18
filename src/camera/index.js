@@ -26,7 +26,7 @@ const piCamStream = async () => {
         const img = streamCamera.takeImage(); 
         fs.writeFileSync("still-image.jpg", img);
         var buffer = fs.readFileSync("still-image.jpg");
-        Jimp.read(img, function(err, image){
+        await Jimp.read(img, function(err, image){
             if (err) {
                 console.error(err);
                 // TODO handle error
