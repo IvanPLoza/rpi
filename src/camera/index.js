@@ -8,23 +8,23 @@ raspberryPiCamera.on('frame', (data) => {
 });
 
 fs.watch("test.jpeg", function(curr, prev){
-    console.log(prev);
-    // Jimp.read(curr, function(err, img){
-    //     if (err) {
-    //         console.error(err);
-    //         // TODO handle error
-    //     }
-    //     var qr = new QrCode();
-    //     qr.callback = function(err, value) {
-    //         if (err) {
-    //             console.error(err);
-    //             // TODO handle error
-    //         }
-    //         console.log(value.result);
-    //         console.log(value);
-    //     };
-    //     qr.decode(img.bitmap);
-    // });;
+    var image = fs.readFileSync("test.jpeg");
+    Jimp.read(image, function(err, img){
+        if (err) {
+            console.error(err);
+            // TODO handle error
+        }
+        var qr = new QrCode();
+        qr.callback = function(err, value) {
+            if (err) {
+                console.error(err);
+                // TODO handle error
+            }
+            console.log(value.result);
+            console.log(value);
+        };
+        qr.decode(img.bitmap);
+    });;
 });
 
 raspberryPiCamera.start({
