@@ -7,8 +7,14 @@ const MOTOR_HR1 = 38; // Right motor backward
 const MOTOR_HR2 = 40; // right motor forward
 const MOTOR_LEFT_EN = 31; // Enable left motor
 const MOTOR_RIGHT_EN = 37; // Enable right motor
-const SERVO_1 = 13; // Enable left motor
-const SERVO_2 = 15; // Enable right motor
+const SERVO_1 = P27; // Enable left motor
+const SERVO_2 = P22; // Enable right motor
+
+var options = {
+    gpiomem: true,          /* Use /dev/gpiomem */
+    mapping: 'physical',    /* Use the P1-P40 numbering scheme */
+    mock: undefined,        /* Emulate specific hardware in mock mode */
+}
 
 rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
