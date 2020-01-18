@@ -3,7 +3,7 @@ var QrCode = require("qrcode-reader");
 var Jimp = require("jimp");
 var fs = require("fs");
 
-raspberryPiCamera.on('data', (data) => {
+raspberryPiCamera.on('frame', (data) => {
     console.log(data);
     Jimp.read(data, function(err, img){
         if (err) {
