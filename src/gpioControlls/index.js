@@ -95,7 +95,7 @@ const testMotors = function(){
 const testServo = function(){
     cameraControl.up(100);
 }
-for(let i = 0; i < 1000; i++){
+setInterval(() => {
     servo.servoWrite(pulseWidth);
  
   pulseWidth += increment;
@@ -104,7 +104,7 @@ for(let i = 0; i < 1000; i++){
   } else if (pulseWidth <= 1000) {
     increment = 100;
   }
-}
+}, 1000);
 
 
 module.exports = {motor, testServo};
