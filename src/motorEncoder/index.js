@@ -18,7 +18,7 @@ class motorEncoder{
 
         //Read states
         let leftState = rpio.read(LEFTM_ENCODER);
-        let rightState = rpio.read(LEFTM_ENCODER);
+        let rightState = rpio.read(RIGHTM_ENCODER);
 
         //Save to results
         result[0] = leftState? true : false;
