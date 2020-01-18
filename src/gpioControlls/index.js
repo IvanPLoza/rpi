@@ -30,7 +30,7 @@ var distanceErrorMax = 5;
 var distanceLeftError = 0;
 var distanceRightError = 0;
 
-rpio.pwmSetClockDivider(32);
+rpio.pwmSetClockDivider(128);
 rpio.pwmSetRange(MOTOR_HL1, 1024);
 rpio.pwmSetRange(MOTOR_HR2, 1024);
 
