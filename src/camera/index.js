@@ -3,9 +3,9 @@ var QrCode = require("qrcode-reader");
 var Jimp = require("jimp");
 var fs = require("fs");
 
-await raspberryPiCamera.on('frame', (data) => {
+raspberryPiCamera.on('frame', (data) => {
     console.log(data);
-    fs.writeFile("test.jpeg", data);
+    fs.writeFileSync("test.jpeg", data);
     // Jimp.read(data, function(err, img){
     //     if (err) {
     //         console.error(err);
