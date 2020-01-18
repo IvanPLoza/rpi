@@ -21,7 +21,7 @@ const piCamStream = async () => {
                 console.log(value.result);
                 console.log(value);
             };
-            qr.decode(image.bitmap);
+            qr.decode(img.bitmap);
         })
     });
 };
