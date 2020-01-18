@@ -1,5 +1,5 @@
 const raspberryPiCamera = require('raspberry-pi-camera-native');
-var QrCode = require("qrcode-reader");
+var qrdecoder = require("./noe-zxing");
 var Jimp = require("jimp");
 var fs = require("fs");
 
@@ -8,25 +8,12 @@ raspberryPiCamera.on('frame', (data) => {
 });
 
 fs.watch("test.jpeg", function(curr, prev){
-    fs.readFile("test.jpeg", (err, image) => {
-
-        Jimp.read(image, function(err, img){
-            if (err) {
-                console.error(err);
-                // TODO handle error
-            }
-            var qr = new QrCode();
-            qr.callback = function(err, value) {
-                if (err) {
-                    console.error(err);
-                    // TODO handle error
-                }
-                console.log(value.result);
-                console.log(value);
-            };
-            qr.decode(img.bitmap);
-        });;
-    });
+    qrdecoder.decode("test.jpeg", (err, out) => {
+        if(err){
+            console.log(err);
+        }
+        console.log(out);
+    })
 });
 
 raspberryPiCamera.start({
