@@ -1,13 +1,13 @@
 var io = require('socket.io-client');
 var socket = io("http://on-time.cc:8001");
-require("../roomFunctions/index");
+const {mapping, order} = require("../roomFunctions/index");
 
 socket.connect();
 socket.emit('init', true);
 var map;
 
 socket.on('init', (data) => {
-    data && data[0] && data[1]? map = mapping(data[0], data[1]) : console.log("wrong map response");
+    data && data[0] && data[1] ? map = mapping(data[0], data[1]) : console.log("wrong map response");
 })
 
 socket.on("order", (data) =>{
