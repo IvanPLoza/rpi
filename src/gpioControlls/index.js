@@ -7,6 +7,8 @@ const MOTOR_HR1 = 38; // Right motor backward
 const MOTOR_HR2 = 40; // right motor forward
 const MOTOR_LEFT_EN = 31; // Enable left motor
 const MOTOR_RIGHT_EN = 37; // Enable right motor
+const SERVO_1 = 13; // Enable left motor
+const SERVO_2 = 15; // Enable right motor
 
 rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
@@ -14,6 +16,8 @@ rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.HIGH);
 rpio.open(MOTOR_RIGHT_EN, rpio.OUTPUT, rpio.HIGH);
+rpio.open(SERVO_1, rpio.OUTPUT);
+rpio.open(SERVO_2, rpio.OUTPUT);
 
 var servo1 = new PiServo(13); 
 var servo2 = new PiServo(15); 
