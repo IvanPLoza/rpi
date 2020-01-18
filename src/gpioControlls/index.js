@@ -59,6 +59,7 @@ class motorControll{
 
         return false;
     }
+    
     static stopAll(){
 
         motorEncoder.resetEncoder();

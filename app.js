@@ -5,21 +5,21 @@
  * 
  */
 
-const {motor, testServo} = require("./src/gpioControlls/index.js");
+const {motorControll, testServo} = require("./src/gpioControlls/index.js");
 require("./src/camera/index");
 
-motor.stopAll();
+motorControll.stopAll();
 
 setTimeout(function(){
-    motor.goForward();
+    motorControll.goForward();
 }, 1000);
 setTimeout(function(){
-    motor.goLeft();
+    motorControll.goLeft();
 }, 2000);
 setTimeout(function(){
-    motor.goForward();
+    motorControll.goForward();
 }, 3000);
 setTimeout(function(){
-    motor.goRight();
+    motorControll.goRight();
 }, 4000);
 
