@@ -1,7 +1,10 @@
 const raspberryPiCamera = require('raspberry-pi-camera-native');
 const QRCode = require("qrcode-reader");
 const Jimp = require("jimp");
-var fs = require("fs");
+const io = require('socket.io-client');
+
+const socket = io('http://192.168.88.209:8001');
+socket.connect();
 
 async function readQR(data){
     const img = await Jimp.read(data);
@@ -11,6 +14,7 @@ async function readQR(data){
         qr.decode(img.bitmap);
     });
     console.log(value);
+    socket.emit('scanned', value.result);
 }
 
 raspberryPiCamera.on('frame', (data) => {
