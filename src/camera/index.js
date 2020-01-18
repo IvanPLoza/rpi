@@ -11,6 +11,7 @@ raspberryPiCamera.start({
 });
 
 raspberryPiCamera.once('frame', (data) => {
+    console.log(data);
     Jimp.read(data, function(err, img){
         if (err) {
             console.error(err);
