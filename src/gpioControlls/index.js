@@ -19,13 +19,13 @@ rpio.init(options);
 rpio.open(MOTOR_HL1, rpio.PWM);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
-rpio.open(MOTOR_HR2, rpio.PWM);
+rpio.open(MOTOR_HR2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.HIGH);
 rpio.open(MOTOR_RIGHT_EN, rpio.OUTPUT, rpio.HIGH);
 
 rpio.pwmSetClockDivider(64);
 rpio.pwmSetRange(MOTOR_HL1, 1024);
-rpio.pwmSetRange(MOTOR_HR2, 1024);
+//rpio.pwmSetRange(MOTOR_HR2, 1024);
 
 class motorControll{
 
@@ -47,7 +47,7 @@ class motorControll{
         rpio.write(MOTOR_HL1, speed);
         rpio.write(MOTOR_HL2, 0);
         rpio.write(MOTOR_HR1, 0);
-        rpio.write(MOTOR_HR2, speed);
+        rpio.write(MOTOR_HR2, 0);
     }
 
     static goRight(){
