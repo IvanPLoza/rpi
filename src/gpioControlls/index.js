@@ -7,8 +7,8 @@ const MOTOR_HR1 = 38; // Right motor backward
 const MOTOR_HR2 = 40; // right motor forward
 const MOTOR_LEFT_EN = 31; // Enable left motor
 const MOTOR_RIGHT_EN = 37; // Enable right motor
-const SERVO_1 = 12; // Enable left motor
-const SERVO_2 = 13; // Enable right motor
+const SERVO_1 = 13; // Enable left motor
+const SERVO_2 = 15; // Enable right motor
 
 rpio.init({
     gpiomem: false,
