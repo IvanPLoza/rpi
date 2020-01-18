@@ -4,9 +4,7 @@ const Jimp = require("jimp");
 var fs = require("fs");
 
 async function readQR(data){
-    var img = await Jimp.read(data, function(err, image) {
-           image.grayscale();
-        });
+    var img = await Jimp.read(data);
     
     fs.writeFileSync("test.jpeg", img);
     const qr = new QRCode();
