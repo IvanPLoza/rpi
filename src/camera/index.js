@@ -4,7 +4,12 @@ const Jimp = require("jimp");
 var fs = require("fs");
 
 async function readQR(data){
-    const img = await Jimp.read(data);
+    const img = await new Promise((resolve, reject) => {
+        Jimp.read(data, function(err, image) {
+            resolve(image.grayscale());
+        });
+    })
+    fs.writeFileSync("test.jpeg", img);
     const qr = new QRCode();
     const value = await new Promise((resolve, reject) => {
         qr.callback = (err, v) => err != null ? reject(err) : resolve(v);
@@ -14,7 +19,6 @@ async function readQR(data){
 }
 
 raspberryPiCamera.on('frame', (data) => {
-    fs.writeFileSync("test.jpeg", data);
     readQR(data);
 });
 
