@@ -10,6 +10,12 @@ const MOTOR_RIGHT_EN = 37; // Enable right motor
 const SERVO_1 = 33; // Enable left motor
 const SERVO_2 = 32; // Enable right motor
 
+rpio.init({
+    gpiomem: false,
+    mapping: 'physical',
+    mock: undefined
+})
+
 rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
