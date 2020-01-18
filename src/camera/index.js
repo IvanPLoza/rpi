@@ -1,21 +1,24 @@
 const raspberryPiCamera = require('raspberry-pi-camera-native');
-const WebSocketClient = require("websocket").client;
+const QRCode = require("qrcode-reader");
+const Jimp = require("jimp");
 var fs = require("fs");
 
-var ws = new WebSocketClient();
+raspberryPiCamera.on('frame', (data) => {
+    //fs.writeFileSync("test.jpeg", data);
+    const img = await Jimp.read(data);
+    const qr = new QRCode();
+    const value = await new Promise((resolve, reject) => {
+        qr.callback = (err, v) = err != null ? reject(err) : resolve(v);
+        qr.decode(img.bitmap);
+    });
 
-ws.on("connect", function(conn){
-    raspberryPiCamera.on('frame', (data) => {
-        ws.sendUTF(data);
-    });
-    
-    raspberryPiCamera.start({
-        width: 1280,
-        height: 720,
-        fps: 30,
-        quality: 100,
-        encoding: 'JPEG'
-    });
+    console.log(value);
 });
 
-ws.connect("ws://192.168.88.209:8001");
+raspberryPiCamera.start({
+    width: 1280,
+    height: 720,
+    fps: 30,
+    quality: 100,
+    encoding: 'JPEG'
+});
