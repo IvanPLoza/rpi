@@ -1,5 +1,5 @@
 const raspberryPiCamera = require('raspberry-pi-camera-native');
-var qrdecoder = require("./noe-zxing");
+var qrdecoder = require("./node-zxing");
 var Jimp = require("jimp");
 var fs = require("fs");
 
