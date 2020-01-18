@@ -2,9 +2,15 @@ const raspberryPiCamera = require('raspberry-pi-camera-native');
 var QrCode = require("qrcode-reader");
 var Jimp = require("jimp");
 
-raspberryPiCamera.on('frame', (data) => {
-    console.log(data);
+var buffers = [];
 
+raspberryPiCamera.on('frame', (data) => {
+    //console.log(data);
+    data.pipe(buffers);
+});
+
+buffers.on('change', function(err, val) => {
+    console.log("here");
 });
 
 raspberryPiCamera.start({
