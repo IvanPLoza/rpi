@@ -21,7 +21,7 @@ const piCamStream = async () => {
     await streamCamera.startCapture();
  
     // We can also listen to data events as they arrive
-    videoStream.on("data", (data) => {console.log("New data", data);  const img = await streamCamera.takeImage(); fs.writeFileSync("still-image.jpg", img);});
+    videoStream.on("data", (data) => {console.log("New data", data);  const img = streamCamera.takeImage(); fs.writeFileSync("still-image.jpg", img);});
     videoStream.on("end", data => console.log("Video stream has ended"));
  
     // Wait for 5 seconds
