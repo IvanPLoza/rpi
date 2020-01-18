@@ -71,8 +71,8 @@ class cameraControl{
 
     static up(deg){
         rpio.pwmSetClockDivider(64);
-        rpio.pwmSetRange(33, 1024);
-        rpio.pwmSetData(33, 512);
+        rpio.pwmSetRange(13, 1024);
+        rpio.pwmSetData(15, 512);
     }
 
 }
