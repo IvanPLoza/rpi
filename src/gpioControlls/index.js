@@ -92,12 +92,10 @@ setInterval(() => {
 const motor = new motorControll();
 
 const testMotors = function(){
-    motorControll.stopAll();
-    setTimeout(function(){motorControll.goBackwards(); console.log("going back")}, 1000);
-    setTimeout(function(){motorControll.goForward(); console.log("going forward")}, 2000);
-    setTimeout(function(){motorControll.goLeft(); console.log("going left")}, 3000);
-    setTimeout(function(){motorControll.goRight(); console.log("going right")}, 4000);
-    setTimeout(function(){motorControll.stopAll(); console.log("stopping")}, 5000);
+    motor.goForward();
+    setTimeout(function(){
+      motor.stopALL();
+    }, 1000);
 }
 
 const testServo = function(){
@@ -106,4 +104,4 @@ const testServo = function(){
 
 
 
-module.exports = {motorControll, testServo};
+module.exports = {testMotors, testServo};
