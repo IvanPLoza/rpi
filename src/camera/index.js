@@ -39,7 +39,7 @@ const piCamStream = async () => {
                 }
                 console.log(value);
             };
-            qr.decode({width: 1920, height: 1080}, data);
+            qr.decode({width: 720, height: 480}, data);
        // });
         
     });
