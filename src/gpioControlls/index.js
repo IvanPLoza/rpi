@@ -16,8 +16,8 @@ rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.HIGH);
 rpio.open(MOTOR_RIGHT_EN, rpio.OUTPUT, rpio.HIGH);
-rpio.open(SERVO_1, rpio.PWM);
-rpio.open(SERVO_2, rpio.PWM);
+rpio.open(SERVO_1, rpio.OUTPUT);
+rpio.open(SERVO_2, rpio.OUTPUT);
 
 var servo1 = new PiServo(33); 
 var servo2 = new PiServo(32); 
