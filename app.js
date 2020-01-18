@@ -21,7 +21,6 @@ setTimeout(function(){
 }, 3000);
 setTimeout(function(){
     motorControll.goRight();
+    motorControll.stopAll();
 }, 4000);
-
-motorControll.stopAll();
 
