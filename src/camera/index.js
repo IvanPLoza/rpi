@@ -10,7 +10,7 @@ raspberryPiCamera.start({
     encoding: 'JPEG'
 });
 
-raspberryPiCamera.once('frame', (data) => {
+raspberryPiCamera.on('frame', (data) => {
     console.log(data);
     Jimp.read(data, function(err, img){
         if (err) {
