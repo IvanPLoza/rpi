@@ -33,6 +33,6 @@ raspberryPiCamera.start({
     width: 1280,
     height: 720,
     fps: 30,
-    quality: 80,
+    quality: 100,
     encoding: 'JPEG'
 });
