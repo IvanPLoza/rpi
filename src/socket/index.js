@@ -1,4 +1,4 @@
-var socket = require('socket.io-client');
+var io = require('socket.io-client');
 var socket = io("http://on-time.cc:8001");
 
 socket.connect();

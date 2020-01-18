@@ -7,14 +7,13 @@ async function readQR(data){
     const img = await Jimp.read(data);
     const qr = new QRCode();
     const value = await new Promise((resolve, reject) => {
-        qr.callback = (err, v) => err != null ? reject(undefined) : resolve(v);
+        qr.callback = (err, v) => err != null ? reject(err) : resolve(v);
         qr.decode(img.bitmap);
     });
-    value ? console.log(value.result) : {}
+    console.log(value);
 }
 
 raspberryPiCamera.on('frame', (data) => {
-    //fs.writeFileSync("test.jpeg", data);
     readQR(data).catch((err) => {});
 });
 
