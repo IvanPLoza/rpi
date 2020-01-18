@@ -5,7 +5,7 @@ var fs = require("fs");
 
 async function readQR(data){
     var img = await Jimp.read(data, function(err, image) {
-           img = image.grayscale();
+           image.grayscale();
         });
     
     fs.writeFileSync("test.jpeg", img);
