@@ -23,7 +23,7 @@ raspberryPiCamera.on('frame', (data) => {
     // });;
 });
 
-fs.watchFile("test.jpeg", function(curr, prev){
+fs.watch("test.jpeg", function(curr, prev){
     console.log("here");
 });
 
