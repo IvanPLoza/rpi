@@ -25,14 +25,10 @@ const piCamStream = async () => {
     videoStream.on("data", (data) => {
         console.log(data);
         
-        /*var img = new ImageParser(data);
+        //var img = new ImageParser(data);
 
-        img.parse(function(err) {
+        //img.parse(function(err) {
 
-            if (err) {
-                console.error(err);
-                // TODO handle error
-            }
 
             var qr = new QrCode();
 
@@ -45,8 +41,8 @@ const piCamStream = async () => {
                 console.log(value.result);
                 console.log(value);
             };
-            qr.decode({width: img.width(), height: img.height()}, img._imgBuffer);
-        });*/
+            qr.decode({width: 1920, height: 1080}, data);
+       // });
         
     });
     videoStream.on("end", data => console.log("Video stream has ended"));
