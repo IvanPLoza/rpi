@@ -10,8 +10,8 @@ function mapping(fields, obsticles){
   // mapiranje od vrha prema dnu, izostavljanje polja koja ne postoje
   for(var i = fields.max(); i > 0; i--){
     map.push([]); // pushanje novog reda
-    for(var j = 0; j < data.length; j++){
-      if(data[j] >= i){ // provjera da polje pod nekim slovom stvarno postoji u tom redu a da nije manje za red ili više od ostalih
+    for(var j = 0; j < fields.length; j++){
+      if(fields[j] >= i){ // provjera da polje pod nekim slovom stvarno postoji u tom redu a da nije manje za red ili više od ostalih
         map[counter].push([letters[j]+i.toString(), obsticles.includes(letters[j]+i.toString()) ? 2 : 0]);
       } else {
         map[counter].push([null, null]);
