@@ -30,9 +30,9 @@ var distanceErrorMax = 5;
 var distanceLeftError = 0;
 var distanceRightError = 0;
 
-rpio.pwmSetClockDivider(64);
-rpio.pwmSetRange(MOTOR_HL1, 1024);
-rpio.pwmSetRange(MOTOR_HR2, 1024);
+rpio.pwmSetClockDivider(128);
+rpio.pwmSetRange(MOTOR_HL1, 2058);
+rpio.pwmSetRange(MOTOR_HR2, 2058);
 
 class motorControll{
 
