@@ -5,8 +5,10 @@
  * 
  */
 
-const {motor, testServo} = require("./src/gpioControlls/index.js");
+const {motorControll, testServo} = require("./src/gpioControlls/index.js");
 //require("./src/camera/index");
+
+var motor = new motorControll();
 
 motor.goForward();
 setTimeout(function(){
