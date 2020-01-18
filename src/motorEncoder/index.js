@@ -30,6 +30,9 @@ class motorEncoder{
         result[0] = leftState != previousStateLeft? leftMotorDistance++ : false;
         result[1] = rightState != previousStateRight? leftMotorDistance++ : false;
 
+        previousStateLeft = leftState;
+        previousStateRight = rightState;
+
         return result;
     }
     static initEncoders(){
