@@ -71,3 +71,5 @@ function order(map, table, start_point){
   var output = mapPath(holder, horizontalDistance, verticalDistance, start_point, table)
     return output;
 }
+
+module.exports = {mapping, order};
