@@ -64,7 +64,7 @@ class cameraControl{
 
     static up(deg){
         servo1.open().then(function(){  
-            sv1.setDegree(deg); // 0 - 180
+            servo1.setDegree(deg); // 0 - 180
         });
     }
 
