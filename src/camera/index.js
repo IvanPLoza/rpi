@@ -8,7 +8,7 @@ raspberryPiCamera.on('frame', (data) => {
 });
 
 fs.watch("test.jpeg", function(curr, prev){
-    Jimp.read(data, function(err, img){
+    Jimp.read(curr, function(err, img){
         if (err) {
             console.error(err);
             // TODO handle error
