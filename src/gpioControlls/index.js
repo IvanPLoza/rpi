@@ -16,6 +16,8 @@ var options = {
     mock: undefined,        /* Emulate specific hardware in mock mode */
 }
 
+rpio.init(options);
+
 rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
@@ -71,8 +73,8 @@ class cameraControl{
 
     static up(deg){
         rpio.pwmSetClockDivider(64);
-        rpio.pwmSetRange(13, 1024);
-        rpio.pwmSetData(15, 512);
+        rpio.pwmSetRange(27, 1024);
+        rpio.pwmSetData(27, 512);
     }
 
 }
