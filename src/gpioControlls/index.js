@@ -71,7 +71,7 @@ class motorControll{
 
 
 const testMotors = function(){
-    motorControll.goForward(300);
+    motorControll.goForward(512);
     setTimeout(function(){
         motorControll.stopAll();
     }, 1000);
