@@ -31,7 +31,7 @@ const piCamStream = async () => {
                 console.error(err);
                 // TODO handle error
             } else {
-               await new Promise((resolve) => {
+                 new Promise((resolve) => {
 
                     var qr = new QrCode();
                     qr.callback = function(err, value) {
