@@ -1,7 +1,7 @@
 const { StreamCamera, Codec } = require( "pi-camera-connect" );
 const fs = require("fs");
 var QrCode = require('qrcode-reader');
-var ImageParser = require("image-parser");
+//var ImageParser = require("image-parser");
 
 //Construct qr code class
 var qr = new QrCode();
