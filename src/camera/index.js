@@ -6,25 +6,18 @@ var Jimp = require("jimp");
 const stillCamera = new StillCamera();
 
 const piCamStream = async () => {
-    stillCamera.takeImage().then(image => {
-
-        Jimp.read(image, function(err, img){
-            if (err) {
-                console.error(err);
-                // TODO handle error
-            }
-            var qr = new QrCode();
-            qr.callback = function(err, value) {
-                if (err) {
-                    console.error(err);
-                    // TODO handle error
-                }
-                console.log(value.result);
-                console.log(value);
-            };
-            qr.decode(img.bitmap);
-        })
+    const streamCamera = new StreamCamera({
+        codec: Codec.MJPEG
     });
+ 
+    await streamCamera.startCapture();
+ 
+    const image = await streamCamera.takeImage();
+    fs.writeFileSync(__dirname + "/image.jpg", image);
+    // Process image...
+ 
+    await streamCamera.stopCapture();
+    
 };
 
 
