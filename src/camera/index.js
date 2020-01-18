@@ -6,7 +6,7 @@ var fs = require("fs");
 async function readQR(data){
     const img = await new Promise((resolve) => {
         Jimp.read(data).then((image) => {
-            image.grayscale().contrast(1).posterize(2);
+            image.grayscale().contrast(1);
             image.write("test.jpeg");
             resolve(image);
         });
