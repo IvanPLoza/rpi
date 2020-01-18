@@ -1,6 +1,3 @@
-var data = [3, 4, 4];
-var tables = ["B3", "C4"];
-
 Array.prototype.max = function() {
   return Math.max.apply(null, this);
 };

@@ -1,5 +1,5 @@
 var socket = require('socket.io-client');
-var socket = io("https://on-time.cc");
+var socket = io("https://on-time.cc:8001");
 
 socket.connect();
 socket.emit('init', true);
