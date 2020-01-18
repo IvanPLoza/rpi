@@ -8,6 +8,12 @@ const RIGHTM_ENCODER = 26;
 rpio.open(LEFTM_ENCODER, rpio.INPUT);
 rpio.open(RIGHTM_ENCODER, rpio.INPUT);
 
+var leftMotorDistance = 0;
+var rightMotorDistance = 0;
+
+var previousStateLeft = 0;
+var previousStateRight = 0;
+
 class motorEncoder{
     static testEncoders(){
         console.log(this.readEncoders());
@@ -21,10 +27,23 @@ class motorEncoder{
         let rightState = rpio.read(RIGHTM_ENCODER);
 
         //Save to results
-        result[0] = leftState? true : false;
-        result[1] = rightState? true : false;
+        result[0] = leftState != previousStateLeft? leftMotorDistance++ : false;
+        result[1] = rightState != previousStateRight? leftMotorDistance++ : false;
 
         return result;
+    }
+    static initEncoders(){
+        leftMotorDistance = leftState;
+        previousStateLeft = leftState;
+        rightMotorDistance = rightState;
+        previousStateRight = rightState;
+    }
+
+    static resetEncoders(){
+        leftMotorDistance = 0;
+        rightMotorDistance = 0;
+        previousStateLeft = leftState;
+        previousStateRight = rightState;
     }
 }
 
