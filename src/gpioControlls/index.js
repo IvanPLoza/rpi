@@ -2,13 +2,11 @@ var rpio = require('rpio');
 const {motorEncoder} = require("../motorEncoder/index");
 
 const MOTOR_HL1 = 32; // Left motor forward
-const MOTOR_HL2 = 33; // Left motor backward
+const MOTOR_HL2 = 40; // Left motor backward
 const MOTOR_HR1 = 38; // Right motor backward
-const MOTOR_HR2 = 40; // right motor forward
+const MOTOR_HR2 = 33; // right motor forward
 const MOTOR_LEFT_EN = 31; // Enable left motor
 const MOTOR_RIGHT_EN = 37; // Enable right motor
-const SERVO_1 = 13; // Enable left motor
-const SERVO_2 = 15; // Enable right motor
 
 var options = {
     gpiomem: false,         
