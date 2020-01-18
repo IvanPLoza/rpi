@@ -8,7 +8,7 @@ raspberryPiCamera.on('frame', (data) => {
 });
 
 fs.watch("test.jpeg", function(curr, prev){
-    console.log(curr);
+    //console.log(curr);
     qrdecoder.decode("test.jpeg", (err, out) => {
         if(err){
             console.log(err);
