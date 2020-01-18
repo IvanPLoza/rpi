@@ -43,14 +43,14 @@ class motorControll{
         if(distanceLeftError > distanceErrorMax){
             
 
-            console.log("Left error happened");
+            console.log("Left error happened", distanceLeftError);
 
             return 1;
         }
         if(distanceLeftError < distanceErrorMax){
             
 
-            console.log("right error happened");
+            console.log("right error happened", distanceRightError);
 
             return 2;
         }
