@@ -9,7 +9,7 @@ raspberryPiCamera.on('frame', (data) => {
     data.pipe(buffers);
 });
 
-buffers.on('change', function(err, val) => {
+buffers.on('change', function(err, val) {
     console.log("here");
 });
 
