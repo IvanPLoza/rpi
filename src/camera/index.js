@@ -46,7 +46,7 @@ const piCamStream = async () => {
     videoStream.on("end", data => console.log("Video stream has ended"));
 
     // Wait for 5 seconds
-    await new Promise(resolve => setTimeout(() => resolve(), 5000));
+    await new Promise(resolve => setTimeout(() => resolve(), 7000));
 
     await streamCamera.stopCapture();
 };
