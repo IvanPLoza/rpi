@@ -1,7 +1,4 @@
 var rpio = require('rpio');
-var PiServo = require('pi-servo');
-const Gpio = require('pigpio').Gpio;
-const servo = new Gpio(2, {mode: Gpio.OUTPUT});
 
 const MOTOR_HL1 = 32; // Left motor forward
 const MOTOR_HL2 = 33; // Left motor backward
@@ -9,8 +6,6 @@ const MOTOR_HR1 = 38; // Right motor backward
 const MOTOR_HR2 = 40; // right motor forward
 const MOTOR_LEFT_EN = 31; // Enable left motor
 const MOTOR_RIGHT_EN = 37; // Enable right motor
-const SERVO_1 = 13; // Enable left motor
-const SERVO_2 = 15; // Enable right motor
 
 var options = {
     gpiomem: false,          /* Use /dev/gpiomem */
@@ -21,12 +16,18 @@ var options = {
 
 rpio.init(options);
 
-rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
-rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
-rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
-rpio.open(MOTOR_HR2, rpio.OUTPUT, rpio.LOW);
+rpio.open(MOTOR_HL1, rpio.PWM);
+rpio.open(MOTOR_HL2, rpio.PWM);
+rpio.open(MOTOR_HR1, rpio.PWM);
+rpio.open(MOTOR_HR2, rpio.PWM);
 rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.HIGH);
 rpio.open(MOTOR_RIGHT_EN, rpio.OUTPUT, rpio.HIGH);
+
+rpio.pwmSetClockDivider(64);
+rpio.pwmSetRange(MOTOR_HL1, 1024);
+rpio.pwmSetRange(MOTOR_HL2, 1024);
+rpio.pwmSetRange(MOTOR_HR1, 1024);
+rpio.pwmSetRange(MOTOR_HR2, 1024);
 
 class motorControll{
 
@@ -44,11 +45,11 @@ class motorControll{
         rpio.write(MOTOR_HR2, rpio.LOW);
     }
 
-    static goForward(){
-        rpio.write(MOTOR_HL1, rpio.HIGH);
-        rpio.write(MOTOR_HL2, rpio.LOW);
-        rpio.write(MOTOR_HR1, rpio.LOW);
-        rpio.write(MOTOR_HR2, rpio.HIGH);
+    static goForward(speed){
+        rpio.write(MOTOR_HL1, speed);
+        rpio.write(MOTOR_HL2, 0);
+        rpio.write(MOTOR_HR1, 0);
+        rpio.write(MOTOR_HR2, speed);
     }
 
     static goRight(){
@@ -70,29 +71,9 @@ class motorControll{
     }
 }
 
-class cameraControl{
-
-    static up(deg){
-        let pulseWidth = 1000;
-let increment = 100;
-setInterval(() => {
-    servo.servoWrite(pulseWidth);
- 
-  pulseWidth += increment;
-  if (pulseWidth >= 2000) {
-    increment = -100;
-  } else if (pulseWidth <= 1000) {
-    increment = 100;
-  }
-}, 1000);
-    }
-
-}
-
-const motor = new motorControll();
 
 const testMotors = function(){
-    motorControll.goForward();
+    motorControll.goForward(300);
     setTimeout(function(){
         motorControll.stopAll();
     }, 1000);
