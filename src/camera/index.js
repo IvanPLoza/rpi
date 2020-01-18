@@ -20,7 +20,7 @@ var fs = require("fs");
 //     qr.decode(img.bitmap);
 // });;
 
-raspberryPiCamera.on('frame', (data) => {
+raspberryPiCamera.on('data', (data) => {
     console.log(data);
     var stream = fs.writeFile("test.jpeg");
     stream.pipe(data);
