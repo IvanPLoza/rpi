@@ -38,7 +38,7 @@ class motorControll{
 
     static checkForErrors(){
         distanceLeftError = motorEncoder.readEncoders()[0] == false ? distanceLeftError++ : distanceLeftError;
-        distanceRightError = motorEncoder.readEncoders()[0] == false ? distanceRightError++ : distanceRightError;
+        distanceRightError = motorEncoder.readEncoders()[1] == false ? distanceRightError++ : distanceRightError;
 
         if(distanceLeftError > distanceErrorMax){
             
@@ -52,7 +52,7 @@ class motorControll{
 
             console.log("right error happened");
 
-            return 2
+            return 2;
         }
 
         return false;
