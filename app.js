@@ -10,4 +10,3 @@ const {motorEncoder} = require("./src/motorEncoder/index.js");
 require("./src/camera/index.js");
 
 testMotors();
-setInterval(function(){motorEncoder.testEncoders();}, 500);

@@ -15,6 +15,7 @@
     "npm": "^6.13.6",
     "opencv4nodejs": "^5.5.0",
     "pi-camera-connect": "^0.2.0",
+    "qrcode": "^1.4.4",
     "rpio": "^2.1.1",
     "socket.io-client": "^2.3.0"
   }
