@@ -25,29 +25,31 @@ const piCamStream = async () => {
     // We can also listen to data events as they arrive
     videoStream.on("data", (data) => {
         console.log(data);
-    
 
-        Jimp.read(data, function(err, image) {
-
-            if (err) {
-                console.error(err);
-                // TODO handle error
-            } else {
-
-                var qr = new QrCode();
-
-                qr.callback = function(err, value) {
-                    if (err) {
-                        console.error(err);
-                        // TODO handle error
-                    }
-                    console.log(value);
-                };
-                qr.decode(image.bitmap);
-            }
-        })
     });
     videoStream.on("end", data => console.log("Video stream has ended"));
+
+    const image = await streamCamera.takeImage();
+
+    Jimp.read(image, function(err, img) {
+
+        if (err) {
+            console.error(err);
+            // TODO handle error
+        } else {
+
+            var qr = new QrCode();
+
+            qr.callback = function(err, value) {
+                if (err) {
+                    console.error(err);
+                    // TODO handle error
+                }
+                console.log(value);
+            };
+            qr.decode(img.bitmap);
+        }
+    })
 
     // Wait for 5 seconds
     await new Promise(resolve => setTimeout(() => resolve(), 7000));
