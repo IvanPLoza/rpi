@@ -94,7 +94,7 @@ const motor = new motorControll();
 const testMotors = function(){
     motorControll.goForward();
     setTimeout(function(){
-        motorControll.stopALL();
+        motorControll.stopAll();
     }, 1000);
 }
 
