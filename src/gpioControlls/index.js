@@ -15,7 +15,7 @@ var options = {
     mapping: 'physical',    /* Use the P1-P40 numbering scheme */
     mock: undefined,        /* Emulate specific hardware in mock mode */
 }
-var sv1 = new PiServo(13); 
+var sv1 = new PiServo(2); 
 
 rpio.init(options);
 
