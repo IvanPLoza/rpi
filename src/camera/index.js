@@ -13,7 +13,7 @@ const piCamStream = async () => {
      streamCamera.startCapture();
  
     const image = await streamCamera.takeImage();
-    fs.writeFileSync(__dirname + "/image.jpg", image);
+    fs.writeFileSync("image.jpg", image);
     // Process image...
  
     streamCamera.stopCapture();
