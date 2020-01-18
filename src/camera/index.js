@@ -37,7 +37,6 @@ const piCamStream = async () => {
                     console.error(err);
                     // TODO handle error
                 }
-                console.log(value.result);
                 console.log(value);
             };
             qr.decode({width: 1920, height: 1080}, data);
