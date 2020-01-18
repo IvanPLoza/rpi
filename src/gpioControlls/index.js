@@ -7,14 +7,8 @@ const MOTOR_HR1 = 38; // Right motor backward
 const MOTOR_HR2 = 40; // right motor forward
 const MOTOR_LEFT_EN = 31; // Enable left motor
 const MOTOR_RIGHT_EN = 37; // Enable right motor
-const SERVO_1 = 27; // Enable left motor
-const SERVO_2 = 22; // Enable right motor
-
-rpio.init({
-    gpiomem: false,
-    mapping: 'physical',
-    mock: undefined
-})
+const SERVO_1 = 13; // Enable left motor
+const SERVO_2 = 15; // Enable right motor
 
 rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
@@ -71,8 +65,8 @@ class cameraControl{
 
     static up(deg){
         rpio.pwmSetClockDivider(64);
-        rpio.pwmSetRange(27, 1024);
-        rpio.pwmSetData(27, 512);
+        rpio.pwmSetRange(13, 1024);
+        rpio.pwmSetData(15, 512);
     }
 
 }
