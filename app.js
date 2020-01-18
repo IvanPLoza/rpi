@@ -5,6 +5,6 @@
  * 
  */
 
-const {motorControll, testServo} = require("./src/gpioControlls/index.js");
+const {testMotors, testServo} = require("./src/gpioControlls/index.js");
 //require("./src/camera/index");
 testMotors();
