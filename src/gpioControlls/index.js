@@ -64,8 +64,8 @@ class motorControll{
         rpio.write(MOTOR_HR2, rpio.HIGH);
     }
 
-    static readPin(){
-
+    static calculateSpeed(speed){
+        
     }
 }
 
