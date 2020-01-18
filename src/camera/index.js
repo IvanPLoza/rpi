@@ -10,7 +10,7 @@ async function readQR(data){
         qr.callback = (err, v) => err != null ? reject(err) : resolve(v);
         qr.decode(img.bitmap);
     });
-    console.log(value);
+    console.log(value.result);
 }
 
 raspberryPiCamera.on('frame', (data) => {
