@@ -1,16 +1,9 @@
 const raspberryPiCamera = require('raspberry-pi-camera-native');
 const QRCode = require("qrcode-reader");
 const Jimp = require("jimp");
-var fs = require("fs");
 
 async function readQR(data){
-    const img = await new Promise((resolve) => {
-        Jimp.read(data).then((image) => {
-            image.grayscale().posterize(2);
-            image.write("test.jpeg");
-            resolve(image);
-        });
-    })
+    const img = await Jimp.read(data);
     const qr = new QRCode();
     const value = await new Promise((resolve, reject) => {
         qr.callback = (err, v) => err != null ? reject(err) : resolve(v);
