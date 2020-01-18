@@ -1,6 +1,7 @@
 const { StreamCamera, Codec } = require( "pi-camera-connect" );
 const fs = require("fs");
 var QrCode = require('qrcode-reader');
+var Jimp = require("jimp");
 //var ImageParser = require("image-parser");
 
 //Construct qr code class
@@ -24,12 +25,15 @@ const piCamStream = async () => {
     // We can also listen to data events as they arrive
     videoStream.on("data", (data) => {
         console.log(data);
-        
-        //var img = new ImageParser(data);
+    
 
-        //img.parse(function(err) {
+        Jimp.read(data, function(err, image) {
 
-
+            if (err) {
+                console.error(err);
+                // TODO handle error
+            }
+            
             var qr = new QrCode();
 
             qr.callback = function(err, value) {
@@ -39,9 +43,9 @@ const piCamStream = async () => {
                 }
                 console.log(value);
             };
-            qr.decode({width: 720, height: 480}, data);
-       // });
-        
+            qr.decode(image.bitmap);
+
+        })
     });
     videoStream.on("end", data => console.log("Video stream has ended"));
 
