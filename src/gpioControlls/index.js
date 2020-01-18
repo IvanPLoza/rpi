@@ -73,7 +73,6 @@ class cameraControl{
         rpio.pwmSetClockDivider(64);
         rpio.pwmSetRange(33, 1024);
         rpio.pwmSetData(33, 512);
-        rpio.PWM()
     }
 
 }
