@@ -30,21 +30,22 @@ const piCamStream = async () => {
             if (err) {
                 console.error(err);
                 // TODO handle error
-            }
-            new Promise((resolve) => {
+            } else {
+               await new Promise((resolve) => {
 
-                 var qr = new QrCode();
-                qr.callback = function(err, value) {
-                    if (err) {
-                        console.error(err);
-                        // TODO handle error
-                    }
-                    console.log(value.result);
-                    console.log(value);
-                    resolve();
-                };
-                qr.decode(image.bitmap);
-            });
+                    var qr = new QrCode();
+                    qr.callback = function(err, value) {
+                        if (err) {
+                            console.error(err);
+                            // TODO handle error
+                        }
+                        console.log(value.result);
+                        console.log(value);
+                        resolve();
+                    };
+                    qr.decode(image.bitmap);
+                });
+            }
         })
     });
     
