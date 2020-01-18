@@ -33,6 +33,9 @@ class motorEncoder{
         return result;
     }
     static initEncoders(){
+        let leftState = rpio.read(LEFTM_ENCODER);
+        let rightState = rpio.read(RIGHTM_ENCODER);
+
         leftMotorDistance = leftState;
         previousStateLeft = leftState;
         rightMotorDistance = rightState;
@@ -40,6 +43,8 @@ class motorEncoder{
     }
 
     static resetEncoders(){
+        let leftState = rpio.read(LEFTM_ENCODER);
+        let rightState = rpio.read(RIGHTM_ENCODER);
         leftMotorDistance = 0;
         rightMotorDistance = 0;
         previousStateLeft = leftState;
