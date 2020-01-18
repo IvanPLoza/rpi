@@ -36,7 +36,6 @@ const piCamStream = async () => {
                 if (err) {
                     console.error(err);
                     // TODO handle error
-                    return done(err);
                 }
                 console.log(value.result);
                 console.log(value);
