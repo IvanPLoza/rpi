@@ -1,5 +1,10 @@
 var rpio = require('rpio');
 var PiServo = require('pi-servo');
+const Gpio = require('pigpio').Gpio;
+const motor = new Gpio(2, {mode: Gpio.OUTPUT});
+
+let pulseWidth = 1000;
+let increment = 100;
 
 const MOTOR_HL1 = 32; // Left motor forward
 const MOTOR_HL2 = 33; // Left motor backward
@@ -15,7 +20,7 @@ var options = {
     mapping: 'physical',    /* Use the P1-P40 numbering scheme */
     mock: undefined,        /* Emulate specific hardware in mock mode */
 }
-var sv1 = new PiServo(2); 
+
 
 rpio.init(options);
 
@@ -90,9 +95,16 @@ const testMotors = function(){
 const testServo = function(){
     cameraControl.up(100);
 }
+for(let i = 0; i < 1000; i++){
+    motor.servoWrite(pulseWidth);
+ 
+  pulseWidth += increment;
+  if (pulseWidth >= 2000) {
+    increment = -100;
+  } else if (pulseWidth <= 1000) {
+    increment = 100;
+  }
+}
 
-sv1.open().then(function(){  
-    sv1.setDegree(100); // 0 - 180
-  });
 
 module.exports = {motor, testServo};
