@@ -60,7 +60,7 @@ class motorControll{
 
     static stopAll(){
 
-        motorEncoder.resetEncoder();
+        motorEncoder.resetEncoders();
 
         rpio.pwmSetData(MOTOR_HL1, 0);
         rpio.write(MOTOR_HL2, rpio.LOW);
