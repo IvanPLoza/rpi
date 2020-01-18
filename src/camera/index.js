@@ -8,12 +8,12 @@ const piCamStream = async () => {
     
 
     const streamCamera = new StreamCamera({
-        codec: Codec.MJPEG
+        codec: Codec.H264
     });
  
     const videoStream = streamCamera.createStream();
  
-    const writeStream = fs.createWriteStream("video-stream.mjpeg");
+    const writeStream = fs.createWriteStream("video-stream.h264");
  
     // Pipe the video stream to our video file
     videoStream.pipe(writeStream);
@@ -24,7 +24,7 @@ const piCamStream = async () => {
     videoStream.on("data", (data) => {
         console.log("New data", data);  
         const img = streamCamera.takeImage(); 
-        fs.writeFileSync("still-image.jpeg", img);
+        fs.writeFileSync("still-image.jpg", img);
         
     });
     
