@@ -10,7 +10,7 @@ require("./src/camera/index");
 
 motorControll.stopAll();
 
-motorControll.goForward(226, 256);
+motorControll.goForward(120, 156);
 setTimeout(function(){
     motorControll.stopAll();
 }, 3000);
