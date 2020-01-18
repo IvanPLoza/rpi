@@ -24,24 +24,26 @@ const piCamStream = async () => {
     videoStream.on("data", (data) => {
         console.log("New data", data);  
         const img = streamCamera.takeImage(); 
-        fs.writeFileSync("still-image.jpg", img);
-        var buffer = fs.readFileSync("still-image.jpg");
-        Jimp.read(buffer, function(err, image){
-            if (err) {
-                console.error(err);
-                // TODO handle error
-            }
-            var qr = new QrCode();
-            qr.callback = function(err, value) {
+        fs.writeFileSync("still-image.jpg", img).then(() => {
+
+            var buffer = fs.readFileSync("still-image.jpg");
+            Jimp.read(buffer, function(err, image){
                 if (err) {
                     console.error(err);
                     // TODO handle error
                 }
-                console.log(value.result);
-                console.log(value);
-            };
-            qr.decode(image.bitmap);
-        })
+                var qr = new QrCode();
+                qr.callback = function(err, value) {
+                    if (err) {
+                        console.error(err);
+                        // TODO handle error
+                    }
+                    console.log(value.result);
+                    console.log(value);
+                };
+                qr.decode(image.bitmap);
+            })
+        });
     });
     
     videoStream.on("end", data => console.log("Video stream has ended"));
