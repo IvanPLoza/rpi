@@ -7,7 +7,7 @@ async function readQR(data){
     const img = await Jimp.read(data);
     const qr = new QRCode();
     const value = await new Promise((resolve, reject) => {
-        qr.callback = (err, v) => err != null ? reject(err) : resolve(v);
+        qr.callback = (err, v) => err != null ? reject() : resolve(v);
         qr.decode(img.bitmap);
     });
     console.log(value);
