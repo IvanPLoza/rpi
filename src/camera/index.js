@@ -6,16 +6,10 @@ var fs = require("fs");
 raspberryPiCamera.on('frame', (data) => {
     console.log(data);
     Jimp.read(data, function(err, img){
-        if (err) {
-            console.error(err);
-            // TODO handle error
-        }
+       
         var qr = new QrCode();
         qr.callback = function(err, value) {
-            if (err) {
-                console.error(err);
-                // TODO handle error
-            }
+            
             console.log(value.result);
             console.log(value);
         };
