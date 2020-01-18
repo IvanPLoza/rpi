@@ -23,7 +23,7 @@ var fs = require("fs");
 raspberryPiCamera.on('data', (data) => {
     console.log(data);
     var stream = fs.writeFile("test.jpeg");
-    stream.pipe(data);
+    data.pipe(stream);
 });
 
 raspberryPiCamera.start({
