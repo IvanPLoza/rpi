@@ -6,5 +6,4 @@
  */
 
 const {motor, testServo} = require("./src/gpioControlls/index.js");
-
-testServo();
+require("./src/camera/index");
