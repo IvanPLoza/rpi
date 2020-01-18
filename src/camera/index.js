@@ -25,13 +25,13 @@ const piCamStream = async () => {
         console.log("New data", data);  
         const img = streamCamera.takeImage(); 
         fs.writeFileSync("still-image.jpg", img);
-        Jimp.read(img, await function(err, image){
+        await Jimp.read(img, function(err, image){
             if (err) {
                 console.error(err);
                 // TODO handle error
             }
             var qr = new QrCode();
-            qr.callback = await function(err, value) {
+            qr.callback = function(err, value) {
                 if (err) {
                     console.error(err);
                     // TODO handle error
