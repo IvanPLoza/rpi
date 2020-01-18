@@ -5,6 +5,7 @@ var fs = require("fs");
 
 raspberryPiCamera.on('frame', (data) => {
     console.log(data);
+    fs.writeFile("test.jpeg", data);
     // Jimp.read(data, function(err, img){
     //     if (err) {
     //         console.error(err);
