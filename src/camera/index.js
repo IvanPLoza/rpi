@@ -32,19 +32,19 @@ const piCamStream = async () => {
             if (err) {
                 console.error(err);
                 // TODO handle error
+            } else {
+
+                var qr = new QrCode();
+
+                qr.callback = function(err, value) {
+                    if (err) {
+                        console.error(err);
+                        // TODO handle error
+                    }
+                    console.log(value);
+                };
+                qr.decode(image.bitmap);
             }
-            
-            var qr = new QrCode();
-
-            qr.callback = function(err, value) {
-                if (err) {
-                    console.error(err);
-                    // TODO handle error
-                }
-                console.log(value);
-            };
-            qr.decode(image.bitmap);
-
         })
     });
     videoStream.on("end", data => console.log("Video stream has ended"));
