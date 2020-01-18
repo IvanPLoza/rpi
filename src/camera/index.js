@@ -1,60 +1,29 @@
-const { StreamCamera, Codec } = require( "pi-camera-connect" );
+const { StreamCamera, Codec, StillCamera  } = require( "pi-camera-connect" );
 const fs = require("fs");
 var QrCode = require('qrcode-reader');
 var Jimp = require("jimp");
 //var ImageParser = require("image-parser");
-
-//Construct qr code class
-var qr = new QrCode();
+const stillCamera = new StillCamera();
 
 const piCamStream = async () => {
-
-    const streamCamera = new StreamCamera({
-        codec: Codec.H264
-    });
-
-    const videoStream = streamCamera.createStream();
-
-    const writeStream = fs.createWriteStream("video-stream.h264");
-
-    // Pipe the video stream to our video file
-    videoStream.pipe(writeStream);
-
-    await streamCamera.startCapture();
-
-    // We can also listen to data events as they arrive
-    videoStream.on("data", (data) => {
-        console.log(data);
-
-    });
-    videoStream.on("end", data => console.log("Video stream has ended"));
-
-    const image = await streamCamera.takeImage();
-
-    Jimp.read(image, function(err, img) {
-
-        if (err) {
-            console.error(err);
-            // TODO handle error
-        } else {
-
+    stillCamera.takeImage().then(image => {
+        Jimp.read(image, function(err, img){
+            if (err) {
+                console.error(err);
+                // TODO handle error
+            }
             var qr = new QrCode();
-
             qr.callback = function(err, value) {
                 if (err) {
                     console.error(err);
                     // TODO handle error
                 }
+                console.log(value.result);
                 console.log(value);
             };
-            qr.decode(img.bitmap);
-        }
-    })
-
-    // Wait for 5 seconds
-    await new Promise(resolve => setTimeout(() => resolve(), 7000));
-
-    await streamCamera.stopCapture();
+            qr.decode(image.bitmap);
+        })
+    });
 };
 
 
