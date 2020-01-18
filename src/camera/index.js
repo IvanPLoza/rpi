@@ -4,7 +4,6 @@ var Jimp = require("jimp");
 var fs = require("fs");
 
 raspberryPiCamera.on('frame', (data) => {
-    console.log(data);
     fs.writeFileSync("test.jpeg", data);
     // Jimp.read(data, function(err, img){
     //     if (err) {
@@ -22,6 +21,10 @@ raspberryPiCamera.on('frame', (data) => {
     //     };
     //     qr.decode(img.bitmap);
     // });;
+});
+
+fs.watchFile("test.jpeg", function(curr, prev){
+    console.log("here");
 });
 
 raspberryPiCamera.start({
