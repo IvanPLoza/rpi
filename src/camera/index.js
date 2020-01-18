@@ -19,9 +19,9 @@ raspberryPiCamera.on('frame', (data) => {
 });
 
 raspberryPiCamera.start({
-    width: 1280,
-    height: 720,
+    width: 720,
+    height: 480,
     fps: 30,
-    quality: 100,
+    quality: 50,
     encoding: 'JPEG'
 });
