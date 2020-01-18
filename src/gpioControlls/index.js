@@ -11,7 +11,7 @@ const SERVO_1 = 27; // Enable left motor
 const SERVO_2 = 22; // Enable right motor
 
 var options = {
-    gpiomem: true,          /* Use /dev/gpiomem */
+    gpiomem: false,          /* Use /dev/gpiomem */
     mapping: 'physical',    /* Use the P1-P40 numbering scheme */
     mock: undefined,        /* Emulate specific hardware in mock mode */
 }
