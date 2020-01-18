@@ -95,6 +95,8 @@ const testMotors = function(){
 const testServo = function(){
     cameraControl.up(100);
 }
+let pulseWidth = 1000;
+let increment = 100;
 setInterval(() => {
     servo.servoWrite(pulseWidth);
  
