@@ -185,4 +185,4 @@ const testServo = function(){
 
 
 
-module.exports = {motor, testServo};
+module.exports = {motorControll, testServo};
