@@ -46,21 +46,21 @@ class motorControll{
         distanceRightError = motorEncoder.readEncoders()[0] == false ? distanceRightError++ : distanceRightError;
 
         if(distanceLeftError > distanceErrorMax){
-            goLeft();
-            setTimeout(function(){
-                goBackwards();
-            }, 100);
+            
 
             console.log("Left error happened");
+
+            return 1;
         }
         if(distanceLeftError < distanceErrorMax){
-            goRight();
-            setTimeout(function(){
-                goBackwards();
-            }, 100);
+            
 
             console.log("right error happened");
+
+            return 2
         }
+
+        return false;
     }
     static stopAll(){
 
@@ -74,27 +74,65 @@ class motorControll{
 
     static goBackwards(){
 
-        await checkForErrors();
+        if(checkForErrors() == 1){
+            goLeft();
+            setTimeout(function(){
+                rpio.write(MOTOR_HL1, rpio.LOW);
+                rpio.write(MOTOR_HL2, rpio.HIGH);
+                rpio.write(MOTOR_HR1, rpio.HIGH);
+                rpio.write(MOTOR_HR2, rpio.LOW);
+            }, 300);
+            
+        }
+        else if(checkForErrors() == 2){
+            goRight();
 
-        rpio.write(MOTOR_HL1, rpio.LOW);
-        rpio.write(MOTOR_HL2, rpio.HIGH);
-        rpio.write(MOTOR_HR1, rpio.HIGH);
-        rpio.write(MOTOR_HR2, rpio.LOW);
+            setTimeout(function(){
+                rpio.write(MOTOR_HL1, rpio.LOW);
+                rpio.write(MOTOR_HL2, rpio.HIGH);
+                rpio.write(MOTOR_HR1, rpio.HIGH);
+                rpio.write(MOTOR_HR2, rpio.LOW);
+            }, 300);
+        }
+        else {
+            rpio.write(MOTOR_HL1, rpio.LOW);
+            rpio.write(MOTOR_HL2, rpio.HIGH);
+            rpio.write(MOTOR_HR1, rpio.HIGH);
+            rpio.write(MOTOR_HR2, rpio.LOW);
+        }
     }
 
-    static goForward(){
+    static goForward(speed){
 
-        await checkForErrors();
+        if(checkForErrors() == 1){
+            goLeft();
+            setTimeout(function(){
+                rpio.pwmSetData(MOTOR_HL1, speed);
+                rpio.write(MOTOR_HL2, rpio.LOW);
+                rpio.write(MOTOR_HR1, rpio.LOW);
+                rpio.pwmSetData(MOTOR_HR2, speed);
+            }, 300);
+            
+        }
+        else if(checkForErrors() == 2){
+            goRight();
 
-        rpio.pwmSetData(MOTOR_HL1, speed);
+            setTimeout(function(){
+                rpio.pwmSetData(MOTOR_HL1, speed);
+                rpio.write(MOTOR_HL2, rpio.LOW);
+                rpio.write(MOTOR_HR1, rpio.LOW);
+                rpio.pwmSetData(MOTOR_HR2, speed);
+            }, 300);
+        }
+        else {
+            rpio.pwmSetData(MOTOR_HL1, speed);
         rpio.write(MOTOR_HL2, rpio.LOW);
         rpio.write(MOTOR_HR1, rpio.LOW);
         rpio.pwmSetData(MOTOR_HR2, speed);
+        }
     }
 
     static goRight(){
-
-        await checkForErrors();
 
         rpio.pwmSetData(MOTOR_HL1, 1024);
         rpio.write(MOTOR_HL2, rpio.LOW);
@@ -103,8 +141,6 @@ class motorControll{
     }
 
     static goLeft(){
-
-        await checkForErrors();
 
         rpio.write(MOTOR_HL1, rpio.LOW);
         rpio.write(MOTOR_HL2, rpio.HIGH);
