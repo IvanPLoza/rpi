@@ -36,7 +36,7 @@ rpio.pwmSetRange(MOTOR_HR2, 1024);
 
 class motorControll{
 
-    static async checkForErrors(){
+    static checkForErrors(){
         distanceLeftError = motorEncoder.readEncoders()[0] == false ? distanceLeftError++ : distanceLeftError;
         distanceRightError = motorEncoder.readEncoders()[0] == false ? distanceRightError++ : distanceRightError;
 
@@ -100,7 +100,7 @@ class motorControll{
 
     static goForward(speed){
 
-        if(checkForErrors() == 1){
+        if(this.checkForErrors() == 1){
             goLeft();
             setTimeout(function(){
                 rpio.pwmSetData(MOTOR_HL1, speed);
@@ -110,7 +110,7 @@ class motorControll{
             }, 300);
             
         }
-        else if(checkForErrors() == 2){
+        else if(this.checkForErrors() == 2){
             goRight();
 
             setTimeout(function(){
