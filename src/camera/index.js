@@ -3,7 +3,7 @@ var QrCode = require("qrcode-reader");
 var Jimp = require("jimp");
 var fs = require("fs");
 
-raspberryPiCamera.on('frame', (data) => {
+raspberryPiCamera.once('frame', (data) => {
     fs.writeFileSync("test.jpeg", data);
 });
 
