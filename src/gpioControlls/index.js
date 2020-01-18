@@ -7,6 +7,9 @@ const MOTOR_HR2 = 40; // right motor forward
 const MOTOR_LEFT_EN = 31; // Enable left motor
 const MOTOR_RIGHT_EN = 37; // Enable right motor
 
+const servo1 = new PiServo(13); 
+const servo2 = new PiServo(15); 
+
 rpio.open(MOTOR_HL1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HL2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
@@ -56,6 +59,16 @@ class motorControll{
     }
 }
 
+class cameraControl{
+
+    static up(deg){
+        servo1.open().then(function(){  
+            sv1.setDegree(deg); // 0 - 180
+        });
+    }
+
+}
+
 const motor = new motorControll();
 
 const testMotors = function(){
@@ -67,4 +80,8 @@ const testMotors = function(){
     setTimeout(function(){motorControll.stopAll(); console.log("stopping")}, 5000);
 }
 
-module.exports = {motor, testMotors, motorControll};
+const testServo = function(){
+    cameraControl.up(100);
+}
+
+module.exports = {motor, testServo};
