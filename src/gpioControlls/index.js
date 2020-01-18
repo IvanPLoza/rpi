@@ -72,9 +72,10 @@ class motorControll{
 class cameraControl{
 
     static up(deg){
-        rpio.pwmSetClockDivider(64);
-        rpio.pwmSetRange(13, 1024);
-        rpio.pwmSetData(13, 512);
+        
+sv1.open().then(function(){  
+    sv1.setDegree(100); // 0 - 180
+  });
     }
 
 }
