@@ -7,8 +7,8 @@ const MOTOR_HR1 = 38; // Right motor backward
 const MOTOR_HR2 = 40; // right motor forward
 const MOTOR_LEFT_EN = 31; // Enable left motor
 const MOTOR_RIGHT_EN = 37; // Enable right motor
-const SERVO_1 = 33; // Enable left motor
-const SERVO_2 = 32; // Enable right motor
+const SERVO_1 = 12; // Enable left motor
+const SERVO_2 = 13; // Enable right motor
 
 rpio.init({
     gpiomem: false,
@@ -73,7 +73,7 @@ class cameraControl{
         rpio.pwmSetClockDivider(64);
         rpio.pwmSetRange(33, 1024);
         rpio.pwmSetData(33, 512);
-
+        rpio.PWM()
     }
 
 }
