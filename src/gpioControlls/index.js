@@ -1,7 +1,7 @@
 var rpio = require('rpio');
 var PiServo = require('pi-servo');
 const Gpio = require('pigpio').Gpio;
-const motor = new Gpio(2, {mode: Gpio.OUTPUT});
+const servo = new Gpio(2, {mode: Gpio.OUTPUT});
 
 let pulseWidth = 1000;
 let increment = 100;
@@ -96,7 +96,7 @@ const testServo = function(){
     cameraControl.up(100);
 }
 for(let i = 0; i < 1000; i++){
-    motor.servoWrite(pulseWidth);
+    servo.servoWrite(pulseWidth);
  
   pulseWidth += increment;
   if (pulseWidth >= 2000) {
