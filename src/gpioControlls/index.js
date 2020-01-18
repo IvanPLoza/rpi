@@ -30,7 +30,7 @@ rpio.pwmSetRange(MOTOR_HL1, 1024);
 class motorControll{
 
     static stopAll(){
-        rpio.write(MOTOR_HL1, rpio.LOW);
+        rpio.pwmSetData(MOTOR_HL1, 0);
         rpio.write(MOTOR_HL2, rpio.LOW);
         rpio.write(MOTOR_HR1, rpio.LOW);
         rpio.write(MOTOR_HR2, rpio.LOW);
@@ -44,7 +44,7 @@ class motorControll{
     }
 
     static goForward(speed){
-        rpio.pwmSetData(MOTOR_HL1, 0);
+        rpio.pwmSetData(MOTOR_HL1, speed);
         rpio.write(MOTOR_HL2, 0);
         rpio.write(MOTOR_HR1, 0);
         rpio.write(MOTOR_HR2, 0);
@@ -71,7 +71,7 @@ class motorControll{
 
 
 const testMotors = function(){
-    motorControll.goForward(512);
+    motorControll.goForward(300);
     setTimeout(function(){
         motorControll.stopAll();
     }, 1000);
