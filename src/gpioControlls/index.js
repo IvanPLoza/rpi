@@ -72,9 +72,6 @@ class cameraControl{
 
     static up(deg){
         
-sv1.open().then(function(){  
-    sv1.setDegree(100); // 0 - 180
-  });
     }
 
 }
@@ -93,5 +90,9 @@ const testMotors = function(){
 const testServo = function(){
     cameraControl.up(100);
 }
+
+sv1.open().then(function(){  
+    sv1.setDegree(100); // 0 - 180
+  });
 
 module.exports = {motor, testServo};
