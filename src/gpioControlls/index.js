@@ -1,4 +1,5 @@
 var rpio = require('rpio');
+var PiServo = require('pi-servo');
 
 const MOTOR_HL1 = 32; // Left motor forward
 const MOTOR_HL2 = 33; // Left motor backward
