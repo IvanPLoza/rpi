@@ -3,9 +3,6 @@ var PiServo = require('pi-servo');
 const Gpio = require('pigpio').Gpio;
 const servo = new Gpio(2, {mode: Gpio.OUTPUT});
 
-let pulseWidth = 1000;
-let increment = 100;
-
 const MOTOR_HL1 = 32; // Left motor forward
 const MOTOR_HL2 = 33; // Left motor backward
 const MOTOR_HR1 = 38; // Right motor backward
@@ -76,7 +73,18 @@ class motorControll{
 class cameraControl{
 
     static up(deg){
-        
+        let pulseWidth = 1000;
+let increment = 100;
+setInterval(() => {
+    servo.servoWrite(pulseWidth);
+ 
+  pulseWidth += increment;
+  if (pulseWidth >= 2000) {
+    increment = -100;
+  } else if (pulseWidth <= 1000) {
+    increment = 100;
+  }
+}, 1000);
     }
 
 }
@@ -95,18 +103,7 @@ const testMotors = function(){
 const testServo = function(){
     cameraControl.up(100);
 }
-let pulseWidth = 1000;
-let increment = 100;
-setInterval(() => {
-    servo.servoWrite(pulseWidth);
- 
-  pulseWidth += increment;
-  if (pulseWidth >= 2000) {
-    increment = -100;
-  } else if (pulseWidth <= 1000) {
-    increment = 100;
-  }
-}, 1000);
+
 
 
 module.exports = {motor, testServo};
