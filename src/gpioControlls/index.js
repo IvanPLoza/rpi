@@ -103,15 +103,15 @@ class motorControll{
         }
     }
 
-    static goForward(speed){
+    static goForward(speedL, speedR){
 
         if(this.checkForErrors() == 1){
             //this.goLeft();
             setTimeout(function(){
-                rpio.pwmSetData(MOTOR_HL1, speed);
+                rpio.pwmSetData(MOTOR_HL1, speedL);
                 rpio.write(MOTOR_HL2, rpio.LOW);
                 rpio.write(MOTOR_HR1, rpio.LOW);
-                rpio.pwmSetData(MOTOR_HR2, speed);
+                rpio.pwmSetData(MOTOR_HR2, speedR);
             }, 0);
             
         }
@@ -119,17 +119,17 @@ class motorControll{
             //this.goRight();
 
             setTimeout(function(){
-                rpio.pwmSetData(MOTOR_HL1, speed);
+                rpio.pwmSetData(MOTOR_HL1, speedL);
                 rpio.write(MOTOR_HL2, rpio.LOW);
                 rpio.write(MOTOR_HR1, rpio.LOW);
-                rpio.pwmSetData(MOTOR_HR2, speed);
+                rpio.pwmSetData(MOTOR_HR2, speedR);
             }, 0);
         }
         else {
-            rpio.pwmSetData(MOTOR_HL1, speed);
+            rpio.pwmSetData(MOTOR_HL1, speedL);
             rpio.write(MOTOR_HL2, rpio.LOW);
             rpio.write(MOTOR_HR1, rpio.LOW);
-            rpio.pwmSetData(MOTOR_HR2, speed);
+            rpio.pwmSetData(MOTOR_HR2, speedR);
         }
     }
 
