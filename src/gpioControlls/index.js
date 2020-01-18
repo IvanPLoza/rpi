@@ -15,7 +15,7 @@ var options = {
     mapping: 'physical',    /* Use the P1-P40 numbering scheme */
     mock: undefined,        /* Emulate specific hardware in mock mode */
 }
-var sv1 = new PiServo(4); 
+var sv1 = new PiServo(13); 
 
 rpio.init(options);
 
@@ -25,8 +25,6 @@ rpio.open(MOTOR_HR1, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_HR2, rpio.OUTPUT, rpio.LOW);
 rpio.open(MOTOR_LEFT_EN, rpio.OUTPUT, rpio.HIGH);
 rpio.open(MOTOR_RIGHT_EN, rpio.OUTPUT, rpio.HIGH);
-rpio.open(SERVO_1, rpio.PWM);
-rpio.open(SERVO_2, rpio.PWM);
 
 class motorControll{
 
