@@ -43,7 +43,7 @@ const piCamStream = async () => {
         })
     });
 
-    });
+    };
     videoStream.on("end", data => console.log("Video stream has ended"));
  
     // Wait for 5 seconds
