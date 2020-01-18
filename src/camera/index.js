@@ -24,7 +24,7 @@ const piCamStream = async () => {
     videoStream.on("data", (data) => {
         console.log("New data", data);  
         const img = streamCamera.takeImage(); 
-        fs.writeFileSync("still-image.jpg", img);
+        fs.writeFileSync("still-image.jpeg", img);
         
     });
     
