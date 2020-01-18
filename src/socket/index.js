@@ -1,5 +1,6 @@
 var io = require('socket.io-client');
 var socket = io("http://on-time.cc:8001");
+require("../roomFunctions/index");
 
 socket.connect();
 socket.emit('init', true);
