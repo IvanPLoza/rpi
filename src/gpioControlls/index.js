@@ -71,7 +71,7 @@ class motorControll{
     static goBackwards(){
 
         if(checkForErrors() == 1){
-            goLeft();
+            this.goLeft();
             setTimeout(function(){
                 rpio.write(MOTOR_HL1, rpio.LOW);
                 rpio.write(MOTOR_HL2, rpio.HIGH);
@@ -81,7 +81,7 @@ class motorControll{
             
         }
         else if(checkForErrors() == 2){
-            goRight();
+            this.goRight();
 
             setTimeout(function(){
                 rpio.write(MOTOR_HL1, rpio.LOW);
@@ -101,7 +101,7 @@ class motorControll{
     static goForward(speed){
 
         if(this.checkForErrors() == 1){
-            goLeft();
+            this.goLeft();
             setTimeout(function(){
                 rpio.pwmSetData(MOTOR_HL1, speed);
                 rpio.write(MOTOR_HL2, rpio.LOW);
@@ -111,7 +111,7 @@ class motorControll{
             
         }
         else if(this.checkForErrors() == 2){
-            goRight();
+            this.goRight();
 
             setTimeout(function(){
                 rpio.pwmSetData(MOTOR_HL1, speed);
