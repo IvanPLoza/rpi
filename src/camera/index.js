@@ -10,10 +10,10 @@ const piCamStream = async () => {
         sensorMode: SensorMode.Mode6
     });
  
-     streamCamera.startCapture();
+    await streamCamera.startCapture();
  
     const image = await streamCamera.takeImage();
-    
+    fs.writeFileSync("image.jpg", image);
     // Process image...
  
     streamCamera.stopCapture();
