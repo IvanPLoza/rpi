@@ -1,7 +1,7 @@
 const { StreamCamera, Codec } = require( "pi-camera-connect" );
 const fs = require("fs");
 
-
+/*
 const piCamStream = async () => {
 
     const streamCamera = new StreamCamera({
@@ -29,4 +29,4 @@ const piCamStream = async () => {
 
 
 
-piCamStream();
+piCamStream();*/
