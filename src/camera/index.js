@@ -10,7 +10,7 @@ const piCamStream = async () => {
 
     const videoStream = streamCamera.createStream();
 
-    const writeStream = fs.createWriteStream("video-stream.h264");
+    const writeStream = fs.createWriteStream("video-stream.mp4");
 
     // Pipe the video stream to our video file
     videoStream.pipe(writeStream);
