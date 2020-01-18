@@ -92,9 +92,9 @@ setInterval(() => {
 const motor = new motorControll();
 
 const testMotors = function(){
-    motor.goForward();
+    motorControll.goForward();
     setTimeout(function(){
-      motor.stopALL();
+        motorControll.stopALL();
     }, 1000);
 }
 
